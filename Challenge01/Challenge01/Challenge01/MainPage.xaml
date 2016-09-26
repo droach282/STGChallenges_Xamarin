@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Challenge01"
+             x:Class="Challenge01.MainPage">
+
+  <StackLayout>
+    <Entry x:Name="InputEntry" Placeholder="Value" />
+    <Button x:Name="SubmitButton" Clicked="SubmitButton_OnClicked" Text="Add To List" />
+    <Button x:Name="SortButton" Clicked="SortButton_OnClicked" Text="Sort List" />
+    <ListView x:Name="ResultsView" />
+  </StackLayout>
+</ContentPage>
