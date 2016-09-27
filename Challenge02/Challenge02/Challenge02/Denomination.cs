@@ -10,8 +10,6 @@ namespace Challenge02
         public int Count { get; private set; }
         public decimal Remainder { get; private set; }
 
-        public decimal Amount => _value*Count;
-
         private string Name => Count != 1 ? _name.Pluralize() : _name;
 
         public Denomination(string name, decimal value)

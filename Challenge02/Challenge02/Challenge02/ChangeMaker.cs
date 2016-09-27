@@ -28,16 +28,14 @@ namespace Challenge02
 
         public void MakeChange(decimal change)
         {
-            decimal remainder;
             var i = 0;
 
             do
             {
                 var denomination = _denominations[i++];
                 denomination.MakeChange(change);
-                remainder = denomination.Remainder;
-                change -= denomination.Amount;
-            } while (remainder > 0m && i < _denominations.Count);
+                change = denomination.Remainder;
+            } while (change > 0m && i < _denominations.Count);
         }
 
         public void Reset()
