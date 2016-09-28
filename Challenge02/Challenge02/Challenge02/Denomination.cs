@@ -7,8 +7,11 @@ namespace Challenge02
         private readonly decimal _value;
         private readonly string _name;
 
+        private decimal _remainder;
+
+        public Denomination NextDenomination { get; set; }
+
         public int Count { get; private set; }
-        public decimal Remainder { get; private set; }
 
         private string Name => Count != 1 ? _name.Pluralize() : _name;
 
@@ -21,7 +24,9 @@ namespace Challenge02
         public void MakeChange(decimal change)
         {
             Count = (int)decimal.Truncate(change/_value);
-            Remainder = change%_value;
+            _remainder = change%_value;
+            if (_remainder > 0)
+                NextDenomination?.MakeChange(_remainder);
         }
 
         public override string ToString()

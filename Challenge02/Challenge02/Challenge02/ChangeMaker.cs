@@ -24,18 +24,16 @@ namespace Challenge02
             };
 
             _denominations.AddRange(dictionary.Select(x => new Denomination(x.Key, x.Value)));
+
+            for (var i = 0; i < _denominations.Count - 1; i++)
+            {
+                _denominations[i].NextDenomination = _denominations[i + 1];
+            }
         }
 
         public void MakeChange(decimal change)
         {
-            var i = 0;
-
-            do
-            {
-                var denomination = _denominations[i++];
-                denomination.MakeChange(change);
-                change = denomination.Remainder;
-            } while (change > 0m && i < _denominations.Count);
+            _denominations.First().MakeChange(change);
         }
 
         public void Reset()
